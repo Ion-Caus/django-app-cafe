@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p class="fs-1">Place a order</p>
+
+    {% if submitted  %}
+        <div class="alert alert-success" role="alert">
+            Order placed successfully! Your total is <strong>{{ total }} </strong> kr.
+        </div>
+
+    {% else %}
+        <form class="row g-3" style="max-width: 500px;" action="" method="POST">
+            {% csrf_token %}
+
+            {{ drinkForm.as_p }}
+            {{ orderForm.as_p }}
+
+            <div class="col-12">
+            <button type="submit" class="btn btn-primary">Place order</button>
+            </div>
+        </form>
+      {% endif %}
+    
+{% endblock %}
